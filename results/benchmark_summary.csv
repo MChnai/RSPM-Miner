@@ -1,0 +1,16 @@
+Dataset,Algorithm,Variant,MinSup,PatternsCount,CandidatesCount,RuntimeMs,PeakMemoryMB,JaccardExactness
+test.txt,ORN-Miner,V3-Full,3.00,0,5,24,6.55,1.000
+test.txt,ORN-Miner,V3-Full,3.00,0,5,20,5.55,1.000
+test.txt,ORN-Miner,3.00,0,25,2.00,0,0
+test.txt,ORN-Miner,3.00,0,21,2.00,0,0
+test.txt,ORN-Miner,3.00,0,24,2.00,0,0
+test.txt,ORN-Miner,3.00,0,22,2.00,0,0
+test.txt,ORN-Miner,3.00,0,30,2.00,0,0
+test.txt,ORN-Miner,3.00,0,67,4.00,0,0
+benchmark_large_1000.txt,ORN-Miner,1000.00,0,106,12.00,0,0
+benchmark_large_1000.txt,ORN-Miner,1000.00,0,108,12.00,0,0
+benchmark_large_1000.txt,ORN-Miner,10000.00,0,122,14.00,0,0
+benchmark_large_1000.txt,ORN-Miner,1000000.00,0,129,12.00,0,0
+benchmark_large_1000.txt,ORN-Miner,100.00,0,45296,787.73,0,0
+benchmark_large_50000.txt,ORN-Miner,20000.00,0,5990,1426.99,0,0
+benchmark_large_50000.txt,ORN-Miner,20000.00,0,5967,826.14,0,0

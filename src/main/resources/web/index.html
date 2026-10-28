@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RSPM Miner · Benchmark Dashboard</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="header">
+      <div class="eyebrow">MINING WORKBENCH / LOCAL</div>
+      <div class="header-row">
+        <div><h1>RSPM Miner <span>Dashboard</span></h1><p>Chạy ORN-Miner và so sánh hiệu năng qua từng lần thực thi.</p></div>
+        <div class="pill"><span class="dot"></span> Java 17 · localhost</div>
+      </div>
+    </header>
+    <main>
+      <section class="card controls">
+        <div class="section-heading"><div><h2>Thiết lập lần chạy</h2><p>Đọc trực tiếp các tệp <code>.txt</code> trong thư mục <code>data/</code></p></div></div>
+        <form id="runForm" class="form-grid">
+          <label>Tập dữ liệu
+            <select id="dataset" required><option>Đang tải…</option></select>
+          </label>
+          <label>minSup <small>(ngưỡng tuyệt đối)</small>
+            <input id="minSup" type="number" required min="0.000001" step="any" value="2" />
+          </label>
+          <button type="submit" id="runButton">▶ Chạy ORN-Miner</button>
+        </form>
+        <div class="status" id="status" role="status">Sẵn sàng.</div>
+      </section>
+      <section class="metrics" aria-label="Chỉ số lần chạy gần nhất">
+        <div class="stat"><span>Thời gian chạy</span><strong id="metricTime">—</strong><small>milliseconds</small></div>
+        <div class="stat"><span>CPU trung bình</span><strong id="metricCpu">—</strong><small>% tổng năng lực CPU</small></div>
+        <div class="stat"><span>Heap đỉnh quan sát</span><strong id="metricMemory">—</strong><small>MiB (JVM heap used)</small></div>
+        <div class="stat"><span>Số mẫu được trả về</span><strong id="metricPatterns">—</strong><small>theo engine hiện tại</small></div>
+      </section>
+      <section class="chart-grid">
+        <article class="card chart-card full"><div class="section-heading"><div><h2>01 / Thời gian theo giai đoạn</h2><p>Mỗi đường là một lần chạy · trục Y là thời gian tích lũy (ms).</p></div><span class="chart-tag">Runtime</span></div><div class="chart-wrap"><canvas id="runtimeChart"></canvas></div></article>
+        <article class="card chart-card"><div class="section-heading"><div><h2>02 / Mức sử dụng CPU</h2><p>CPU của tiến trình JVM theo thời gian, chuẩn hóa trên các lõi CPU.</p></div><span class="chart-tag">CPU %</span></div><div class="chart-wrap"><canvas id="cpuChart"></canvas></div></article>
+        <article class="card chart-card"><div class="section-heading"><div><h2>03 / Bộ nhớ sử dụng</h2><p>JVM heap đang sử dụng, lấy mẫu mỗi khoảng 100 ms.</p></div><span class="chart-tag">Heap MiB</span></div><div class="chart-wrap"><canvas id="memoryChart"></canvas></div></article>
+      </section>
+      <section class="card history">
+        <div class="section-heading"><div><h2>Lịch sử benchmark</h2><p>Giữ dữ liệu biểu đồ trong bộ nhớ khi server còn chạy; bảng CSV lưu trong <code>results/</code>.</p></div><a class="download" href="/api/export.csv">Xuất CSV</a></div>
+        <div class="table-scroll"><table><thead><tr><th>Run</th><th>Tập dữ liệu</th><th>minSup</th><th>Runtime (ms)</th><th>CPU (%)</th><th>Heap (MiB)</th><th>Mẫu</th><th>Trạng thái</th></tr></thead><tbody id="historyRows"><tr><td colspan="8">Chưa có lần chạy.</td></tr></tbody></table></div>
+      </section>
+      <p class="footnote">Lưu ý: chỉ số CPU/heap được đo trong cùng JVM với web server; không phải số liệu benchmark cô lập của hệ điều hành. Chỉ số pattern phụ thuộc tính đúng đắn của thuật toán hiện tại.</p>
+    </main>
+  </div>
+</body>
+</html>

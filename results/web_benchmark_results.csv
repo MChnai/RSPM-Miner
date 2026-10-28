@@ -1,0 +1,8 @@
+RunId,Dataset,MinSup,RuntimeMs,AvgProcessCpuPercent,PeakHeapMB,Patterns,Status
+1,sample_small.txt,2.00,162.769,12.028,18.000,353,DONE
+2,test.txt,2.00,85.577,2.274,18.000,35,DONE
+3,benchmark_large_500.txt,20000.00,165.129,12.998,13.140,0,DONE
+4,benchmark_large_50000.txt,20000.00,44483.492,9.980,2239.896,406,DONE
+1,benchmark_large_50000.txt,20000.00,40112.453,10.926,2221.000,406,DONE
+2,benchmark_large_10000.txt,20000.00,3955.946,11.947,2283.744,79,DONE
+3,benchmark_large_10000.txt,20.00,0.000,,4002.000,0,RUNNING
